@@ -1,11 +1,10 @@
 # Architecture and API reference
 
-Run commands in this guide from the repository root. ClauseLoom consists of a
-React browser client, one FastAPI process and a local/private inference service.
-There is no database, account system, external AI inference provider or durable
-job queue.
+ClauseLoom has three main parts: a React browser client, one FastAPI process
+and a self-hosted inference service. Reviews live in memory; there is no database
+or durable job queue. Run commands from the repository root.
 
-## Components and boundaries
+## Components
 
 | Component | Responsibility | Main files |
 | --- | --- | --- |
@@ -20,9 +19,9 @@ job queue.
 | Session store | Bearer tokens, memory reservations, result/cache/event state and expiry | `backend/app/core/session.py` |
 | PDF export | In-memory reports with Latin and Devanagari fonts | `backend/app/report/pdf.py` |
 
-Application source code is not served as static content. A production frontend build writes static
-assets to `backend/app/static/`, which FastAPI mounts after the API routes. In
-development, Vite serves the UI and proxies `/api` to the backend.
+A production frontend build writes compiled browser assets to
+`backend/app/static/`, which FastAPI mounts after the API routes. In development,
+Vite serves the UI and proxies `/api` to the backend.
 
 ## Request lifecycle
 
@@ -83,8 +82,8 @@ termination and related patterns. Jurisdiction YAML files configure thresholds;
 they are review heuristics rather than declarations that a clause is illegal.
 
 The model receives one clause, its rule findings and an explanation example.
-Instruction-like source text is neutralized before prompting. An explanation
-must match the Pydantic schema, quote text present in the source and introduce no
+The prompt treats source text as data and neutralizes instruction-like wording.
+An explanation must match the Pydantic schema, quote text present in the source and introduce no
 new numeric tokens in its prose. Hindi responses must contain Devanagari in the
 summary. There is one repair attempt for invalid responses; request failures or
 repeated validation failures produce rule-only results.
@@ -105,12 +104,12 @@ min(100, high_flags × 15 + medium_flags × 7 + low_flags × 2)
 
 Bands are 0–25, 26–55 and 56–100. Related flags in the same clause all count.
 Document-wide absence findings mean a protection was not detected in the supplied
-text. They are not proof of absence.
+text. The check can miss protections expressed in unfamiliar wording.
 
 ## HTTP API
 
 The browser and API normally share an origin. Session IDs are bearer capabilities;
-there is no additional login or ownership lookup.
+holding a session ID grants access to that review, without a separate login.
 
 | Method | Route | Behavior |
 | --- | --- | --- |
@@ -207,17 +206,18 @@ For a local OpenAI-compatible llama.cpp service, set `LLM_BASE_URL` to a private
 URL ending in `/v1`. The adapter expects `/models`, `/chat/completions` and JSON
 schema response formatting. This path has not been live-tested here.
 
-## Security and operational boundaries
+## Security and operating limits
 
 Successful responses receive CSP, no-sniff, no-referrer and no-store headers.
 Origins are checked for cross-site mutations. Timing logs omit document bodies,
 filenames and session URLs; reverse proxies and hosting logs must be configured
 separately. Model HTTP calls disable environment proxies and redirects.
 
-There is no hardened native-parser sandbox, durable job recovery, login, payment
-system or independent legal accuracy certification. Rate limiting by direct peer
-IP can group visitors behind a proxy. The demo's existing limits do not replace
-production access/abuse controls or a review of outstanding dependency findings.
+Native document parsing runs inside the app container without a separate hardened
+sandbox. A restart loses active jobs and reviews. For public hosting, add access
+and abuse controls and assess outstanding dependency findings. The direct-peer
+IP limiter needs particular attention behind a proxy, where visitors may share
+one rate-limit bucket.
 
 See [deployment](deployment.md), [verification](verification.md) and
 [deployment readiness](deployment-readiness.md) for operating instructions and

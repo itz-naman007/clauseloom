@@ -33,7 +33,7 @@ async def evaluate(args):
     lines = [
         "# Evaluation results",
         "",
-        f"Synthetic, hand-labeled development set: {len(cases)} clauses. This is not held-out legal validation.",
+        f"The rule engine was checked against {len(cases)} synthetic, hand-labeled clauses used during development. This measures regression coverage, not accuracy on unseen contracts.",
         "",
         "| Rule metric | Result |",
         "|---|---:|",
@@ -42,7 +42,7 @@ async def evaluate(args):
         f"| True / false positives / false negatives | {tp} / {fp} / {fn} |",
         f"| Seconds per clause | {seconds:.4f} |",
         "",
-        "Document-wide missing-protection checks are covered separately by unit tests. Numbers do not estimate performance on unseen contracts.",
+        "Unit tests cover document-wide missing-protection checks separately from this clause-level corpus.",
         "",
         "## Local model comparison",
         "",
@@ -81,7 +81,7 @@ async def evaluate(args):
         lines.append("| No live model requested | Not run | — | — | — | — |")
     lines += [
         "",
-        "Model evaluation measures raw first attempts independently from rule-enforced production risk levels. Failed requests count as failures. Small subsets are smoke comparisons, not model rankings.",
+        "These model results use raw first responses, before the app's repair attempt and rule-enforced severity. Failed requests count as failures. Small samples are too limited to rank models; use grounding rates to assess the need for output checks and rule-only fallback.",
         "",
         "## Rule mismatches",
         "",

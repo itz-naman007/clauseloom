@@ -1,12 +1,11 @@
 # Deployment and troubleshooting
 
-All deployment options in this repository use the React interface and FastAPI
-backend. Run the commands below from the repository root. Source is intended to
-remain private; credentials and model weights must not be committed.
+Use Docker Compose when you can run Ollama as a separate service. For hosts that
+accept a single container, use the bundled CPU image. Both serve the same React
+interface and FastAPI backend. Run commands from the repository root.
 
-This guide explains the provided deployment files. It does not claim an existing
-hosted URL or provision cloud resources. Review [deployment readiness](deployment-readiness.md)
-before a broad public launch.
+A hosted deployment has not yet been verified. Review the
+[launch checklist](deployment-readiness.md) before accepting public traffic.
 
 ## Choose the deployment layout
 
@@ -64,8 +63,8 @@ docker compose up --build -d
 
 This uses `qwen2.5:1.5b`, concurrency 1 and context 2048. Set `LLM_NUM_THREADS` to
 the CPU quota when the host exposes more physical threads than the container can
-use. A measured two-CPU test improved substantially after setting two threads;
-hardware and document length still affect latency.
+use. The local two-CPU trial used two threads. Hardware, model choice and document
+length all affect latency; see the [verification record](verification.md).
 
 ### GPU profile
 
@@ -144,9 +143,8 @@ Set the real allowed origin and the platform port, and allow long streaming
 responses. Choose resources that can hold the model, API and OCR workload.
 
 The provided Render template checks `/api/health`; monitor `/api/ready` separately
-for model availability. These platforms have not been provisioned or load-tested
-from this workspace. Check current account, plan and resource restrictions rather
-than assuming the full workload fits a free tier.
+for model availability. These configurations have not been tested on hosted
+Render or Railway instances. Check the chosen plan's memory, CPU, timeout and usage limits before deploying.
 
 ## Acceptance tests
 
@@ -186,4 +184,4 @@ Configure ongoing liveness/readiness monitoring separately from this repository.
 | Sessions return 404 after restart | Expected: session state is memory-only and is not restored |
 
 See [architecture](architecture.md) for API/status semantics and
-[verification](verification.md) for what was actually tested.
+[verification](verification.md) for recorded test results.

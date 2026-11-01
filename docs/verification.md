@@ -1,22 +1,34 @@
 # Verification record
 
-Checked locally on 1 November 2026. The main application retains the original
-React UI and FastAPI/Ollama backend.
+Recorded on 1 November 2026. These results cover local checks and the initial
+GitHub Actions run; hosted acceptance testing is still pending.
 
-- Backend: 98 passing tests, Python lint passed.
-- Frontend: production build, type check and unit test passed.
-- Runtime dependency audit: no known Python or npm dependency advisories reported
-  in the audited main-app dependency sets.
-- Docker: standard and single-container images built successfully.
-- Bundled CPU model: rental sample streamed 11 clauses with 14 flags and 7 grounded
-  AI explanations in 111.5 seconds at 2 CPUs / 4 GB. PDF export and deletion passed.
-- Live PDF/DOCX/PNG/JPEG upload checks passed, including real OCR.
-- Browser: original UI rendered results, search and theme controls worked,
-  privacy dialog supported keyboard dismissal, PDF downloaded and review deletion
-  reset the UI. A 390px mobile layout had no horizontal overflow.
-- Mixed English/Hindi report glyphs were visually verified after the font fix.
+| Check | Result |
+| --- | --- |
+| Backend | 98 tests passed; Ruff and dependency compatibility checks passed |
+| Frontend | Unit test, TypeScript check and production build passed |
+| Application dependencies | Python and npm audits reported no known advisories in the audited sets |
+| Docker builds | Standard Compose app image and bundled CPU image built successfully |
+| Live file uploads | PDF, DOCX, PNG and JPEG checks passed, including OCR |
+| Browser | Results, search, theme, keyboard dismissal of the privacy dialog, PDF download and deletion worked |
+| Mobile layout | No horizontal overflow at a 390 CSS-pixel viewport |
+| Report rendering | Mixed English/Hindi glyphs checked visually |
 
-The GitHub Actions workflow has not yet run on a remote repository. Container OS
-advisories, anonymous-use limits, hosted proxy behavior and representative legal
-accuracy still need assessment before a broad production launch. See
-[deployment readiness](deployment-readiness.md) for the detailed findings and limits of this verification.
+## CPU review trial
+
+With the bundled `qwen2.5:1.5b` model and a limit of two CPUs / 4 GB RAM, the
+fictional rental sample completed in **111.5 seconds**. It produced 11 clauses,
+14 flags and seven AI explanations that passed the output checks. PDF export
+and session deletion also passed. This is one observed run, not a latency target
+or a measure of legal correctness.
+
+## Continuous integration
+
+The [initial GitHub Actions run](https://github.com/itz-naman007/clauseloom/actions/runs/41315162523)
+passed for commit `bb5558ff343b08664b0b243dc92bfd2a2c172e24`. It covers backend
+lint/tests and frontend tests/build; it does not deploy or test a hosted service.
+
+Application dependency audits do not cover all operating-system packages in the
+container. Outstanding image advisories, hosted proxy behavior, abuse controls
+and representative-contract accuracy are tracked in the
+[launch review](deployment-readiness.md).
