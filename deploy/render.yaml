@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: clauseloom
+    runtime: docker
+    dockerfilePath: ./deploy/huggingface/Dockerfile
+    dockerContext: .
+    plan: standard
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: '7860'
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: LLM_MODEL
+        value: qwen2.5:1.5b
+      - key: LLM_CONCURRENCY
+        value: '1'
+      - key: LLM_NUM_CTX
+        value: '2048'

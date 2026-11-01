@@ -1,0 +1,7 @@
+deposit_months: 2
+lock_in_months: 6
+escalation_percent: 10
+late_interest_percent: 2
+payment_days: 60
+registration_months: 11
+qualification: 'These are configurable review thresholds, not legal limits. Verify local law and practice.'

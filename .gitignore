@@ -1,0 +1,41 @@
+# Local environments, caches and generated builds
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+node_modules/
+backend/app/static/
+*.tsbuildinfo
+coverage/
+.coverage
+htmlcov/
+dist/
+
+# Credentials and machine-local configuration
+.env
+.env.*
+!.env.example
+*.env
+!deploy/gpu.env
+!deploy/low-resource.env
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+.codex/
+.agents/
+
+# QA outputs, model weights and local experiments
+*.log
+artifacts/
+*.gguf
+*.safetensors
+*.pt
+*.pth
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,58 @@
+services:
+  ollama:
+    image: ollama/ollama:0.40.13
+    environment:
+      OLLAMA_NO_CLOUD: '1'
+    volumes:
+      - models:/root/.ollama
+    healthcheck:
+      test: [CMD, ollama, list]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  ollama-init:
+    image: ollama/ollama:0.40.13
+    entrypoint: [/bin/sh, -c]
+    command: ['ollama pull "$${LLM_MODEL}"']
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5:3b-instruct}
+    depends_on:
+      ollama:
+        condition: service_healthy
+  app:
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+      LLM_BASE_URL: http://ollama:11434
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5:3b-instruct}
+      LLM_CONCURRENCY: ${LLM_CONCURRENCY:-2}
+      LLM_NUM_CTX: ${LLM_NUM_CTX:-4096}
+      LLM_NUM_THREADS: ${LLM_NUM_THREADS:-0}
+      LLM_TIMEOUT: ${LLM_TIMEOUT:-60}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-10}
+      MAX_PAGES: ${MAX_PAGES:-30}
+      SESSION_TTL_MIN: ${SESSION_TTL_MIN:-30}
+      MAX_SESSIONS: ${MAX_SESSIONS:-24}
+      MAX_MEMORY_MB: ${MAX_MEMORY_MB:-128}
+      RATE_LIMIT: ${RATE_LIMIT:-10/hour}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8080}
+      FRAME_ANCESTORS: ${FRAME_ANCESTORS:-'none'}
+      DEFAULT_JURISDICTION: ${DEFAULT_JURISDICTION:-india}
+    depends_on:
+      ollama-init:
+        condition: service_completed_successfully
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1g
+    restart: unless-stopped
+volumes:
+  models:

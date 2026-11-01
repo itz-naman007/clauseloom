@@ -1,0 +1,62 @@
+{"doc_type": "rental", "text": "The deposit is non-refundable.", "flags": ["nonrefundable_deposit"], "risk": "high"}
+{"doc_type": "rental", "text": "The deposit is refundable after documented deductions.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The landlord may deduct charges at sole discretion.", "flags": ["unitemized_deductions"], "risk": "medium"}
+{"doc_type": "rental", "text": "Deductions require itemized receipts.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The lock-in is binding on the tenant only.", "flags": ["tenant_only_lock"], "risk": "high"}
+{"doc_type": "rental", "text": "Both parties have equal exit rights.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The agreement will automatically renew every year.", "flags": ["auto_renewal"], "risk": "medium"}
+{"doc_type": "rental", "text": "The agreement does not automatically renew.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The landlord may enter without notice.", "flags": ["entry_without_notice"], "risk": "high"}
+{"doc_type": "rental", "text": "Entry requires 24 hours prior written notice.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Early exit triggers forfeiture of the deposit.", "flags": ["early_exit_penalty"], "risk": "high"}
+{"doc_type": "rental", "text": "Early exit carries no penalty.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The tenant shall pay for all repairs.", "flags": ["major_repairs"], "risk": "high"}
+{"doc_type": "rental", "text": "The landlord pays for structural repairs.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The landlord may evict without cause.", "flags": ["eviction"], "risk": "high"}
+{"doc_type": "rental", "text": "The landlord cannot evict without cause.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "No pets are allowed.", "flags": ["restrictions"], "risk": "low"}
+{"doc_type": "rental", "text": "Pets and guests are allowed.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Interest is compounded monthly.", "flags": ["compound_interest"], "risk": "high"}
+{"doc_type": "rental", "text": "Interest does not compound.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Monthly rent is INR 10,000. Deposit is INR 40,000.", "flags": ["large_deposit"], "risk": "medium"}
+{"doc_type": "rental", "text": "Monthly rent is INR 10,000. Deposit is INR 20,000.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The lock-in period is 12 months.", "flags": ["long_lock_in"], "risk": "high"}
+{"doc_type": "rental", "text": "The lock-in period is 3 months.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Rent will increase by 15% annually.", "flags": ["high_escalation"], "risk": "medium"}
+{"doc_type": "rental", "text": "Rent will increase by 5% annually.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "A late fee of 3% per month applies.", "flags": ["high_late_fee"], "risk": "high"}
+{"doc_type": "rental", "text": "A late fee of 1% per month applies.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Rent escalation is at the landlord discretion.", "flags": ["unspecified_escalation"], "risk": "medium"}
+{"doc_type": "rental", "text": "Rent is fixed throughout the term.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "Tenant gives 90 days notice. Landlord gives 15 days notice.", "flags": ["notice_asymmetry"], "risk": "medium"}
+{"doc_type": "rental", "text": "Tenant gives 30 days notice. Landlord gives 30 days notice.", "flags": [], "risk": "low"}
+{"doc_type": "rental", "text": "The term is 24 months.", "flags": ["registration_check"], "risk": "low"}
+{"doc_type": "rental", "text": "The term is 24 months and registration is required.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Services automatically renew each year.", "flags": ["auto_renewal"], "risk": "medium"}
+{"doc_type": "freelance", "text": "Services do not automatically renew.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Payment depends on the client's satisfaction.", "flags": ["payment_satisfaction"], "risk": "high"}
+{"doc_type": "freelance", "text": "Payment is due within 30 days of invoice.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "The client may request unlimited revisions.", "flags": ["unlimited_scope"], "risk": "high"}
+{"doc_type": "freelance", "text": "The fee covers two rounds of revisions.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "The freelancer assigns all pre-existing tools.", "flags": ["ip_preexisting"], "risk": "high"}
+{"doc_type": "freelance", "text": "The freelancer retains all pre-existing tools.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Intellectual property transfers before payment.", "flags": ["ip_before_payment"], "risk": "high"}
+{"doc_type": "freelance", "text": "Intellectual property transfers only after payment.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "A non-compete applies for 24 months throughout India.", "flags": ["non_compete"], "risk": "high"}
+{"doc_type": "freelance", "text": "There is no non-compete requirement.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "The client may terminate immediately.", "flags": ["one_sided_termination"], "risk": "high"}
+{"doc_type": "freelance", "text": "Both parties may terminate on 30 days written notice.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "The freelancer accepts unlimited liability.", "flags": ["unlimited_liability"], "risk": "high"}
+{"doc_type": "freelance", "text": "Liability is capped at the project fee.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Liquidated damages apply to delayed delivery.", "flags": ["damages"], "risk": "high"}
+{"doc_type": "freelance", "text": "No liquidated damages are payable.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Confidentiality continues indefinitely.", "flags": ["perpetual_confidentiality"], "risk": "medium"}
+{"doc_type": "freelance", "text": "Confidentiality ends after two years.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "The freelancer bears all arbitration costs.", "flags": ["dispute_costs"], "risk": "high"}
+{"doc_type": "freelance", "text": "Arbitration costs are shared equally.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Arbitration in London will resolve disputes.", "flags": ["foreign_forum"], "risk": "medium"}
+{"doc_type": "freelance", "text": "Disputes are mediated online by mutual agreement.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Exclusivity applies during the project.", "flags": ["exclusivity"], "risk": "medium"}
+{"doc_type": "freelance", "text": "This engagement is non-exclusive.", "flags": [], "risk": "low"}
+{"doc_type": "freelance", "text": "Invoices are payable net-90.", "flags": ["slow_payment"], "risk": "high"}
+{"doc_type": "freelance", "text": "Invoices are payable net-15.", "flags": [], "risk": "low"}

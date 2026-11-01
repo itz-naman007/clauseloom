@@ -1,0 +1,3 @@
+import {describe,it,expect} from 'vitest';
+import {filtered,type ClauseResult} from './types';
+describe('clause filtering',()=>{const data=[{clause:{text:'Rent due monthly'},explanation:{plain_summary:'Pay rent',risk_level:'low'},flags:[]},{clause:{text:'Unlimited liability'},explanation:{plain_summary:'No cap',risk_level:'high'},flags:[{}]}] as ClauseResult[];it('combines search, severity and meaningful-only filters',()=>{expect(filtered(data,'LIABILITY','high',true)).toHaveLength(1);expect(filtered(data,'rent','high',false)).toHaveLength(0);expect(filtered(data,'','all',true)).toHaveLength(1);});});

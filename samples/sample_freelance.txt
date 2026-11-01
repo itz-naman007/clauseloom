@@ -1,0 +1,32 @@
+FICTIONAL SAMPLE — WEB DEVELOPMENT SERVICES AGREEMENT
+This fictional agreement is between client Example Studio and freelancer Kiran Sample for a small business website. It is for demonstration only.
+
+1. SCOPE AND FEE
+The freelancer will deliver a five-page website. The project fee is INR 80,000. The project duration is 8 weeks.
+
+2. PAYMENT
+Invoices are payable net-90 after submission. Payment is subject to the client's satisfaction at the client's sole discretion.
+
+3. REVISIONS
+The client may request unlimited revisions and unlimited changes until the client considers the website finished.
+
+4. INTELLECTUAL PROPERTY
+All intellectual property rights transfer to the client upon creation, before payment. The freelancer assigns all pre-existing tools and background materials used in the project to the client.
+
+5. RESTRICTIONS
+A non-compete applies for 24 months throughout India after termination. The freelancer must not solicit any customer of the client during that period.
+
+6. TERMINATION
+The client may terminate immediately without notice. The freelancer must provide 60 days written notice and complete all requested work before leaving.
+
+7. LIABILITY
+The freelancer accepts unlimited liability and indemnifies the client against all claims and losses connected with the website. Liquidated damages apply to any breach.
+
+8. CONFIDENTIALITY
+Confidentiality obligations continue indefinitely with no end date, including ordinary business information.
+
+9. DISPUTES
+Arbitration in London will resolve all disputes. The freelancer bears all arbitration costs regardless of outcome.
+
+10. RENEWAL AND EXCLUSIVITY
+The services automatically renew each year. Exclusivity prevents the freelancer from working with any other client during the engagement.
